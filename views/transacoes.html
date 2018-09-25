@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+
+    <title>Admin</title>
+</head>
+
+<body>
+    <h1>Transacoes</h1>
+    <div class="container">
+        <div class="row main">
+            <div class="main-login main-center align-center">
+
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Escolha a conta e o valor para tranferir</label>
+                        <input type="number" class="form-control" aria-describedby="emailHelp" placeholder="Enter com money"
+                            name="contas">
+                        <select name="palestra" class="custom-select" id="inputGroupSelect01" nome=''required>
+                        </select>
+                        <br><br><br><br><br>
+                        <label for="exampleInputEmail1">Escolha a conta para enviar a transferência</label>
+                        <select name="palestra" class="custom-select" id="inputGroupSelect02" required>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/js/bootstrap.js"></script>
+</body>
+
+
+<script>
+    const URL_TO_FETCH_IMAGE = 'http://localhost:3000/api/';
+
+    /*
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    };*/
+
+    fetch(URL_TO_FETCH_IMAGE)
+        .then(function (response) {
+            response.json()
+                .then(function (data) {
+                    data.map((e, i) => {
+                        let titulo = e.nome
+                        let contas = e.contas
+                        var id = e._id
+
+
+                        let html = '<option value="' + id + '" selected>' + titulo + '-- valor em conta: ' + contas + '</option>';
+                        $('#inputGroupSelect01').append(html)
+
+                        /*    if (getUrlParameter('o') === id.toString()) {
+                            let html = '<option value="' + id + '" selected>' + titulo + '</option>';
+                            $('#inputGroupSelect01').append(html)
+                        } else {
+                            let html = '<option value="' + id + '">' + titulo + '</option>';
+                            $('#inputGroupSelect01').append(html)
+                        }*/
+                    })
+                    data.map((e, i) => {
+                        let titulo = e.nome
+                        let contas = e.contas
+                        var id = e._id
+
+
+                        let html = '<option value="' + id + '" selected>' + titulo + '-- valor em conta: ' + contas + '</option>';
+                        $('#inputGroupSelect02').append(html)
+
+                        /*    if (getUrlParameter('o') === id.toString()) {
+                            let html = '<option value="' + id + '" selected>' + titulo + '</option>';
+                            $('#inputGroupSelect01').append(html)
+                        } else {
+                            let html = '<option value="' + id + '">' + titulo + '</option>';
+                            $('#inputGroupSelect01').append(html)
+                        }*/
+                    })
+                });
+        })
+        .then(() => {
+
+        })
+        .catch(function (err) {
+            console.error(err);
+        });
+</script>
+
+
+</html>
