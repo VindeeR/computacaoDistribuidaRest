@@ -7,6 +7,9 @@ var cons = require('consolidate');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/transacoes');
+var saqueRouter = require('./routes/saque');
+var depositoRouter = require('./routes/deposito');
+
 var apisRouter = require('./routes/api');
 
 
@@ -42,6 +45,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/transacoes', usersRouter);
 app.use('/api', apisRouter);
+app.use('/saque', saqueRouter);
+app.use('/deposito', depositoRouter);
+
 
 
 

@@ -8,7 +8,6 @@ router.get('/', function(req, res, next) {
 
 });
 router.post('/', async (req, res, next) => {
-  res.render('index');
   try {
     await Conta.create(req.body)
     res.redirect('/')

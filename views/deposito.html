@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <h1>Transacoes</h1>
+    <h1>Deposito</h1>
     <div class="container">
         <div class="row main">
             <div class="main-login main-center align-center">
@@ -35,10 +35,7 @@
                         <select name="conta1" class="custom-select" id="inputGroupSelect01" required>
                         </select>
                         <br><br><br><br><br>
-                        <label>Escolha a conta para enviar a transferência</label>
-                        <!--conta 2-->
-                        <select name="conta2" class="custom-select" id="inputGroupSelect02" required>
-                        </select>
+                        
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -63,15 +60,6 @@
                         var id = e._id
                         let html = '<option value="' + id + '" selected>' + titulo + '-- valor em conta: ' + contas + '</option>';
                         $('#inputGroupSelect01').append(html)
-                    })
-                    data.map((e, i) => {
-                        let titulo = e.nome
-                        let contas = e.contas
-                        var id = e._id
-
-
-                        let html = '<option value="' + id + '" selected>' + titulo + '-- valor em conta: ' + contas + '</option>';
-                        $('#inputGroupSelect02').append(html)
                     })
                 });
         })
